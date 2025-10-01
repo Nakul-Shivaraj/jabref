@@ -15,16 +15,16 @@ class RemoveLatexCommandsFormatterTest {
     @ParameterizedTest
     @CsvSource({
             // Without LaTeX commands
-            "'some text', 'some text'",
+            "some text, some text",
 
             // Single command wiped
-            "'\\sometext', ''",
+            "\\sometext, ''",
 
             // Single space after command removed
-            "'\\some text', 'text'",
+            "\\some text, text",
 
             // Multiple spaces after command removed
-            "'\\some     text', 'text'",
+            "\\some     text, text",
 
             // Escaped backslash becomes backslash
             "'\\\\', '\\'",
@@ -36,11 +36,10 @@ class RemoveLatexCommandsFormatterTest {
             "'\\\\some text\\\\', '\\some text\\'",
 
             // Escaped underscore replaced
-            "'some\\_text', 'some_text'",
+            "some\\_text, some_text",
 
             // Realistic LaTeX URL with escaped underscores
-            "'http://pi.informatik.uni-siegen.de/stt/36\\_2/./03\\_Technische\\_Beitraege/ZEUS2016/beitrag\\_2.pdf', "
-                    + "'http://pi.informatik.uni-siegen.de/stt/36_2/./03_Technische_Beitraege/ZEUS2016/beitrag_2.pdf'"
+            "'http://pi.informatik.uni-siegen.de/stt/36\\_2/./03\\_Technische\\_Beitraege/ZEUS2016/beitrag\\_2.pdf', 'http://pi.informatik.uni-siegen.de/stt/36_2/./03_Technische_Beitraege/ZEUS2016/beitrag_2.pdf'"
     })
     void format(String input, String expected) {
         assertEquals(expected, formatter.format(input));

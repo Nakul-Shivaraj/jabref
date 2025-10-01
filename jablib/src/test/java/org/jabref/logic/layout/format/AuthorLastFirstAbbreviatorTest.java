@@ -9,7 +9,7 @@ class AuthorLastFirstAbbreviatorTest {
 
     private final AuthorLastFirstAbbreviator abbreviator = new AuthorLastFirstAbbreviator();
 
-    @ParameterizedTest(name = "[{index}] input=\"{0}\", expected=\"{1}\"")
+    @ParameterizedTest
     @CsvSource({
             // One author, simple name
             "'Lastname, Name', 'Lastname, N.'",
@@ -18,8 +18,7 @@ class AuthorLastFirstAbbreviatorTest {
             "'Lastname, Name Middlename', 'Lastname, N. M.'",
 
             // Two authors with common names
-            "'Lastname, Name Middlename and Sobrenome, Nome Nomedomeio', "
-                    + "'Lastname, N. M. and Sobrenome, N. N.'",
+            "'Lastname, Name Middlename and Sobrenome, Nome Nomedomeio', 'Lastname, N. M. and Sobrenome, N. N.'",
 
             // Author with Jr. suffix
             "'Other, Jr., Anthony N.', 'Other, Jr., A. N.'",
@@ -34,8 +33,7 @@ class AuthorLastFirstAbbreviatorTest {
             "'Smith, John', 'Smith, J.'",
 
             // Multiple authors with complex last names
-            "'von Neumann, John and Smith, John and Black Brown, Peter', "
-                    + "'von Neumann, J. and Smith, J. and Black Brown, P.'"
+            "'von Neumann, John and Smith, John and Black Brown, Peter', 'von Neumann, J. and Smith, J. and Black Brown, P.'"
     })
     void abbreviate(String input, String expected) {
         assertEquals(expected, abbreviator.format(input));

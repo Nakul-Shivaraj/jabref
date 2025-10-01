@@ -12,25 +12,24 @@ class RemoveBracketsTest {
     private final LayoutFormatter formatter = new RemoveBrackets();
 
     /**
-     * Test method for
-     * {@link org.jabref.logic.layout.format.RemoveBrackets#format(java.lang.String)}.
+     * Test method for {@link org.jabref.logic.layout.format.RemoveBrackets#format(java.lang.String)}.
      */
     @ParameterizedTest
     @CsvSource({
             // Brace pair correctly removed
-            "'{some text}', 'some text'",
+            "{some text}, some text",
 
             // Single opening brace correctly removed
-            "'{some text', 'some text'",
+            "{some text, some text",
 
             // Single closing brace correctly removed
-            "'some text}', 'some text'",
+            "some text}, some text",
 
             // Brace pair with escaped backslash correctly removed
-            "'\\{some text\\}', '\\some text\\'",
+            "\\{some text\\}, \\some text\\",
 
             // Without brackets unmodified
-            "'some text', 'some text'"
+            "some text, some text"
     })
     void format(String input, String expected) {
         assertEquals(expected, formatter.format(input));

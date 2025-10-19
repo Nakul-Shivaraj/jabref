@@ -1,5 +1,6 @@
 package org.jabref.logic.layout.format;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -7,7 +8,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class RemoveLatexCommandsFormatterTest {
 
-    private final RemoveLatexCommandsFormatter formatter = new RemoveLatexCommandsFormatter();
+    private RemoveLatexCommandsFormatter formatter;
+
+    @BeforeEach
+    void setUp() {
+        formatter = new RemoveLatexCommandsFormatter();
+    }
 
     /**
      * Test method for {@link RemoveLatexCommandsFormatter#format(String)}.

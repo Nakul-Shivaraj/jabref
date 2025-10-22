@@ -16,10 +16,7 @@ class RemoveBracketsTest {
     void setUp() {
         formatter = new RemoveBrackets();
     }
-
-    /**
-     * Test method for {@link org.jabref.logic.layout.format.RemoveBrackets#format(String)}.
-     */
+    
     @ParameterizedTest
     @CsvSource({
             // Brace pair correctly removed

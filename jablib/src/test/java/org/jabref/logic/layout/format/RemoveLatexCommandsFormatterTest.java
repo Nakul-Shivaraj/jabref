@@ -15,9 +15,6 @@ class RemoveLatexCommandsFormatterTest {
         formatter = new RemoveLatexCommandsFormatter();
     }
 
-    /**
-     * Test method for {@link RemoveLatexCommandsFormatter#format(String)}.
-     */
     @ParameterizedTest
     @CsvSource({
             // Without LaTeX commands
